@@ -1,6 +1,7 @@
 <template>
+  <!--挂载在app元素内-->
   <div id="app">
-    <img src="./assets/logo.png">
+
     <router-view/>
   </div>
 </template>
@@ -13,11 +14,10 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family:"Microsoft YaHei","微软雅黑",Arial,sans-serif,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

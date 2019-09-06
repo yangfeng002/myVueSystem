@@ -1,4 +1,4 @@
-# myvuesystem
+# myVueSystem
 
 > vue+nodeJs前后端分离
 
