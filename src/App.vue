@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="less">
 #app {
   font-family:"Microsoft YaHei","微软雅黑",Arial,sans-serif,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB";
   -webkit-font-smoothing: antialiased;
