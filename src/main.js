@@ -18,8 +18,6 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
 
-
-
 /**
  *
  *  是否启动代码质量检查

@@ -1,7 +1,6 @@
 <template>
   <!--挂载在app元素内-->
   <div id="app">
-
     <router-view/>
   </div>
 </template>
