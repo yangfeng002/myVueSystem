@@ -1,32 +1,43 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import axios from 'axios'
-import login from '@/components/login'
-import home from '@/components/main/home'
-import register from '@/components/register'
+import Router from 'vue-router'
+import routes from './routers'
+import { setToken, getToken } from '@/libs/util'
 
-/* 使用路由下面的语句不可缺少  Vue.use(Router) */
-Vue.use(Router)
-/*如果使用axios,则需要改写原型链*/
+/**
+ * 路由引入
+ * 路由详细的配置在routers.js文件中
+ */
+Vue.use(Router);
+const router = new Router({
+  routes,
+  mode: 'history'
+});
+/**
+ * 路由问题修复---- this.$router.push({name: 'home'}) 之前这个调用报错
+ * @type {(function(*=): (Q.Promise<any> | Promise<T | never> | *))|*}
+ */
+const routerPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+    return routerPush.call(this, location).catch(error=> error)
+};
+
+/**
+ * 如果使用axios,则需要改写原型链
+ * @type {AxiosStatic}
+ * 调用使用 this.$ajax({})
+ */
 Vue.prototype.$ajax = axios;
 
-export default new Router({
-  routes: [
-    {
-      path: '/login',
-      name: 'login',
-      component: login
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: home
-    },
-    {
-      path:'/register',
-      name:'register',
-      component:register
-    }
-  ]
-})
+
+/**
+ * 注册全局前置守卫
+ */
+
+
+
+export default router
+
+
+
+

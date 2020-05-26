@@ -1,4 +1,4 @@
-# myVueSystem
+# myVueSystem 
 
 > vue+nodeJs前后端分离,一个基于vue2.x编写的后端管理项目
 
@@ -19,8 +19,12 @@
 │   └────prod.env.js #生产环境变量
 ├── dist  #生产环境下build后的文件存放目录（发布目录）
 ├── server  #服务端代码目录，提供给前端接口
+    |___ _api 接口
+    |___ _mock 模拟测试数据
+    |___ _controller.js 供后台调用
+    
+     
 ├── src #前端项目源码目录
-│   ├───—api  #封装的接口文件目录
 │   ├───—assets  #资源目录
 │   ├───—common  #公用文件目录
 │   ├───—components  #组件及页面文件目录
@@ -28,10 +32,15 @@
 │   ├───—App.vue #项目入口文件
 │   ├───—bus.js  #公共通信组件
 │   └────main.js  #项目的核心文件
+|
+|
+|
 ├── static  #开发模式下的静态资源目录
 ├── index.html #首页入口文件，你可以添加一些 meta 信息或同统计代码啥的
 ├── package.json #项目配置文件
 └── README.md #项目的说明文档，markdown 格式
+
+
 ```
 
 ### 相关技术：
@@ -57,7 +66,7 @@ git clone https://github.com/yangfeng002/wjsystem.git
 第三步：启动服务端
 （1）新开一个命令行窗口
 （2）定位到项目中的server目录并安装依赖
-  > cd 你自己的位置/myVueSystem/server
+  > cd 你自己的位置/myVueSystem/controller
   > npm install
 （3）依赖安装成功后执行启动命令
   > npm start 

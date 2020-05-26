@@ -1,5 +1,5 @@
 <template>
-  <!--主页-->
+  <!--默认主页内容-->
   <el-container style="height: 500px; border: 1px solid #eee">
     <el-header>header</el-header>
     <el-aside></el-aside>

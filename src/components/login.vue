@@ -6,7 +6,7 @@
              label-position="left"
              label-width="0px"
              class="login-page">
-      <h3 class="title">中国移动咪咕互娱经营分析系统</h3>
+      <h3 class="title">系统登录</h3>
       <el-form-item prop="username">
         <el-input type="text"
                   v-model="ruleFrom.username"
@@ -55,27 +55,38 @@ export default {
       console.log(this.$refs);
       this.$refs.ruleFrom.validate((valid) => {
         if (valid) {
-          this.logining = true
-          if (this.ruleFrom.username === 'admin' &&
-              this.ruleFrom.password === '123456') {
-              this.logining = false
-            sessionStorage.setItem('user', this.ruleFrom.username)
-            //去后台请求
-           /* this.$ajax({
-               method:'post',
-               url:''
+          this.logining = true;//加载中
+          //去后台请求
+          this.$ajax({
+            method: 'post',
+            url: '/egbi/login',
+            data: {
+               username:this.ruleFrom.username,
+               password:this.ruleFrom.password
+            }
+          }).then((res) =>{
+            this.logining = false;//加载中
+             //console.log(res);
+            if(res.data.dataStatus==0){
+                //请求成功，跳转到home
+              this.$router.push({
+                name: 'home'
+              })
+            }else{
+              this.$alert('用户名或密码错误!', '提示', {
+                confirmButtonText: 'ok'
+              });
+              this.logining = false;
+              this.ruleFrom.username = '';
+              this.ruleFrom.password = '';
+            }
 
-            })*/
-            this.$router.push({path: '/home'})
-          }else {
-            this.$alert('用户名或密码错误!', '提示', {
-              confirmButtonText: 'ok'
-            })
-            this.logining = false;
-
-          }
+          }).catch((error)=>{
+            this.logining = false;//停止加载
+            console.log(error);
+          });
         } else {
-          console.log('error submit!')
+          console.log('error submit!');
           return false
         }
       })

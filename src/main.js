@@ -3,7 +3,13 @@ import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
+import 'es6-promise/auto'
+import store from './store'
 
+
+// 实际打包时应该不引入mock
+/* eslint-disable */
+if (process.env.NODE_ENV !== 'production') require('../server/mock/mock.js');
 /**
  * import router from './router' 其实就是：import router from './router/index.js'
  * 在使用webpack项目中，如果导入index.js，则可以省略
@@ -35,10 +41,13 @@ Vue.use(ElementUI);
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
  // template: '<App/>'
   render: h => h(App),
   methods:{
 
   }
-})
+});
+
+

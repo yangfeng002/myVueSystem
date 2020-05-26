@@ -1,6 +1,7 @@
 <template>
   <!--挂载在app元素内-->
   <div id="app">
+    <h4>{{this.$store.state.count}}</h4>
     <router-view/>
   </div>
 </template>

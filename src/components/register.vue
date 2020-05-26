@@ -6,7 +6,7 @@
              label-position="left"
              label-width="0px"
              class="register-page">
-      <h3 class="title">中国移动咪咕互娱经营分析系统</h3>
+      <h3 class="title">系统注册</h3>
       <el-form-item prop="username">
         <el-input type="text"
                   v-model="ruleForm.username"
@@ -57,15 +57,14 @@
               //验证通过，调用后台接口
             this.$ajax({
               method: 'post',
-              url: '/api/user/addUser',
+              url: '/egbi/register',
               data: {
                 username:this.ruleForm.username,
                 password: this.ruleForm.password
               }
             }).then((res) =>{
-              debugger
                console.log(res);
-               if(res.status==200){
+               if(res.data.dataStatus==0){
                  //表示运行成功
                  this.logining = false;
                  this.$confirm('用户注册成功', '提示', {
