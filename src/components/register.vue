@@ -49,22 +49,22 @@
       }
     },
     methods: {
-      submitForm:function(){
+      submitForm: function () {
         // 注册用户，用户名和密码非空
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-            this.logining = true;
-              //验证通过，调用后台接口
+            this.logining = true
+            //验证通过，调用后台接口
             this.$ajax({
               method: 'post',
               url: '/egbi/register',
               data: {
-                username:this.ruleForm.username,
+                username: this.ruleForm.username,
                 password: this.ruleForm.password
               }
-            }).then((res) =>{
-               console.log(res);
-               if(res.data.dataStatus==0){
+            }).then((res) => {
+               console.log(res)
+               if (res.data.dataStatus== 0) {
                  //表示运行成功
                  this.logining = false;
                  this.$confirm('用户注册成功', '提示', {
